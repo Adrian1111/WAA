@@ -14,7 +14,6 @@ angular.module("usterkaAdmin")
                     url: 'http://tranquil-hamlet-1905.herokuapp.com/users/login',
                     data: $.param({username: user, password: pass})
                 }).then(function (response) {
-                    console.log(response);
                     $cookies.put('authCookie', response);
                     deferred.resolve( response );
                 }).catch(function (response) {

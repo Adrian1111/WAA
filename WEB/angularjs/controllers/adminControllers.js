@@ -2,11 +2,13 @@
     .controller("authCtrl", ['$rootScope','$http','$location','AuthUrl', function ($scope, $http, $location, AuthUrl) {
 
         $scope.authenticate = function (user, pass) {
+            $scope.showSpinner = true;
             AuthUrl.checkCredentials(user, pass).then( function ( result ) {
                 if(result.data && result.data.indexOf("error") == -1){
                     $location.path("/main");
                 } else{
                     $scope.authenticationError = result.data;
+                    $scope.showSpinner = false;
                 }
             }, function(error){
                 $scope.authenticationError = error.data;
@@ -36,5 +38,5 @@
             return ret;
 
         };
-    });;;
+    });
 
