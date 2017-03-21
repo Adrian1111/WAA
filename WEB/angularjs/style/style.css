@@ -1,0 +1,99 @@
+﻿body {
+    background: #eee;
+}
+
+div {
+    width: 100%;
+}
+
+h1{
+    padding: 1px;
+}
+
+.sortorder:after {
+    content: '\25b2';
+}
+
+.sortorder.reverse:after {
+    content: '\25bc';
+}
+
+#chart dd {
+    border-right: 0;
+}
+
+.prompt-statistics {
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+
+.data-one {
+    width: 0.0%;
+}
+
+#reportTable {
+    width: auto;
+}
+
+#reportTable td {
+    max-width: 300px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#reportTable td input {
+    max-width: 225px;
+}
+
+#chart {
+    width: 540px;
+}
+
+#chart dt {
+    width: 160px;
+    float: left;
+    margin: 0 20px 5px 0;
+    padding: 2px 0;
+    display: inline;
+    font-weight: bold;
+    text-align: right;
+}
+
+#chart dd {
+    width: 339px;
+    float: left;
+    margin-bottom: 5px;
+    display: inline;
+}
+
+#chart dd span {
+    color: #fff;
+    background: #09f;
+    text-align: center;
+    padding: 2px 0;
+    display: block;
+
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background: -webkit-gradient(linear, left top, -> left bottom, from(#09f), to(#077fd0));
+    -webkit-box-reflect: below 0 -> -webkit-gradient(linear, left top, -> left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.25)));
+}
+.isHidden{
+    display:none;
+}
+
+.panel-default, .alert-danger, .alert-info{
+    margin: 10px;
+}
+
+/*
+angular styles
+*/
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
