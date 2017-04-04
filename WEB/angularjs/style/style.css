@@ -7,11 +7,11 @@ h1{
 }
 
 .sortorder:after {
-    content: '\25b2';
+    content: '\25bc';
 }
 
 .sortorder.reverse:after {
-    content: '\25bc';
+    content: '\25b2';
 }
 
 #chart dd {
@@ -20,8 +20,6 @@ h1{
 
 .prompt-statistics {
     font-size: 90%;
-    color: #c7254e;
-    background-color: #f9f2f4;
     border-radius: 4px;
 }
 
@@ -79,15 +77,20 @@ h1{
     background: -webkit-gradient(linear, left top, -> left bottom, from(#09f), to(#077fd0));
     -webkit-box-reflect: below 0 -> -webkit-gradient(linear, left top, -> left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.25)));
 }
-.isHidden{
-    display:none;
+
+.panel-default.ng-scope{
+    padding-bottom: 100px;
 }
 
 .panel-default, .alert-danger, .alert-info{
     margin: 10px;
+
+}
+.transform-table{
+    min-width: 740px;
 }
 .loader {
-    border: 16px solid #f3f3f3; /* Light grey */
+    border: 16px solid #fff;
     border-top: 16px solid #3498db; /* Blue */
     border-radius: 50%;
     width: 40px;
@@ -96,10 +99,36 @@ h1{
     float: right;
 
 }
+.hiddenRow{
+    display: none;
+}
+
+.hiddenTable.table>thead>tr {
+    background-color: #f9f9f9;
+}
+#reportTable tbody tr:hover{
+    background-color: #f9f9f9;
+    cursor:pointer
+}
+
+
+@media (max-width: 900px) {
+    .transform-table{
+        display:none;
+    }
+}
+
+.fixed-width{
+    width: 800px;
+}
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+.stick-left{
+    position:relative;
+    clear:both;
 }
 /*
 angular styles
