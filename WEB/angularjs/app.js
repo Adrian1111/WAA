@@ -7,18 +7,23 @@ angular.module('usterkaAdmin', ["ngRoute", "ngResource", "ngCookies"])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/login', {
-                templateUrl: 'views/adminLogin.html'
-                //controller: 'adminControllers'
+                templateUrl: 'views/adminLogin.html',
+                controller: 'authCtrl'
             })
             .when('/main', {
-               // controller: '',
                 templateUrl: 'views/adminMain.html'
             })
             .when('/register', {
-                //controller: '',
                 templateUrl: 'views/register.html'
             })
-            .otherwise({redirectTo: '/login'});
+            .when('/main/:report*', {
+                templateUrl: 'views/adminReportDetails.html'
+            })
+            .when('/logout', {
+                templateUrl: 'views/logout.html',
+                controller: "logoutController"
+            })
+            //.otherwise({redirectTo: '/login'});
     }])
     .factory('authInterceptor', function($q) {
         var service = this;

@@ -1,0 +1,92 @@
+<div ng-controller="reportCtrl">
+    <div ng-show="selectedReport">
+        <div>
+            <h2 tabindex="0">Informacje szczegółowe</h2>
+
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th>Nazwa Pola</th>
+                    <th>Zawartość</th>
+                </tr>
+                <tr>
+                    <td>Nazwa użytkownika</td>
+                    <td>{{selectedReport.username}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        Adres<br>
+                        email {{item.email}}<br>
+                        telefon {{item.phonenumber}}<br>
+                    </td>
+                    <td>{{selectedReport.street}}
+                        {{selectedReport.streetnumber}} /
+                        {{selectedReport.apartmentnumber}}
+                        {{selectedReport.citycode}}
+                        {{selectedReport.city}}<br>
+                        {{selectedReport.email}}<br>
+                        {{selectedReport.phonenumber}}
+                    </td>
+                </tr>
+                <tr>Data dodania
+                    <td></td>
+                    <td>{{selectedReport.insertion_date| limitTo: 10}}</td>
+                </tr>
+                <tr>
+                    <td>Priorytet</td>
+                    <td><select ng-model="selectedReport.priority"
+                                ng-options="priority.name as priority.name for priority in data.priority"
+                                ng-click="updateReport(selectedReport);refreshPlot();" required>
+                        <option value="">{{selectedReport.priority}}</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Gdzie</td>
+                    <td>{{selectedReport.place}}</td>
+                </tr>
+                <tr>
+                    <td>Tytuł</td>
+                    <td><input ng-model="selectedReport.title" ng-keyup="updateReport(selectedReport);refreshPlot();"
+                               required/></td>
+                </tr>
+                <tr>
+                    <td>Opis</td>
+                    <td>{{selectedReport.description}}</td>
+                </tr>
+                <tr>
+                    <td>Sugestie</td>
+                    <td>{{selectedReport.sugestions}}</td>
+                </tr>
+                <tr>
+                    <td>Zdjęcia</td>
+                    <td>
+                        <div>
+                            <img id="obrazek" data-ng-src="{{'data:image/png;base64,'+selectedReport.photo}}"
+                                 width="300" height="220" ng-click="zmniejszObraz()">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Status</td><!--<td>{{selectedReport.status|statusName}}</td>-->
+                    <td>
+                        <!--<input ng-model="editedReport.status" required />-->
+                        <select ng-model="selectedReport.status"
+                                ng-options="status.value as status.name for status in data.status"
+                                ng-click="updateReport(selectedReport);refreshPlot();" required>
+                            <option value="">{{selectedReport.status|statusName}}</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button ng-click="updateReport(selectedReport);refreshPlot(); reloadPage2();"
+                                class="btn btn-xs btn-primary">Zapisz
+                        </button>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+
+</div>

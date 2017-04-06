@@ -21,6 +21,10 @@ h1{
 .prompt-statistics {
     font-size: 90%;
     border-radius: 4px;
+    border: 1px solid #ddd;
+    padding-bottom: 30px;
+    margin-left: 10px;
+    margin-bottom: 30px;
 }
 
 .data-one {
@@ -29,6 +33,7 @@ h1{
 
 #reportTable {
     width: auto;
+    margin-bottom:0px;
 }
 
 #reportTable td {
@@ -43,15 +48,14 @@ h1{
 }
 
 #chart {
-    width: 540px;
+    margin: 15px;
 }
 
 #chart dt {
-    width: 160px;
-    float: left;
-    margin: 0 20px 5px 0;
+    width: 20px;
+    /*float: left;*/
     padding: 2px 0;
-    display: inline;
+    /*display: inline;*/
     font-weight: bold;
     text-align: right;
 }
@@ -74,8 +78,8 @@ h1{
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     border-radius: 2px;
-    background: -webkit-gradient(linear, left top, -> left bottom, from(#09f), to(#077fd0));
-    -webkit-box-reflect: below 0 -> -webkit-gradient(linear, left top, -> left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.25)));
+    background: -webkit-gradient(linear, left top, left bottom, from(#09f), to(#077fd0));
+    -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.25)));
 }
 
 .panel-default.ng-scope{
@@ -86,9 +90,9 @@ h1{
     margin: 10px;
 
 }
-.transform-table{
+/*.transform-table{
     min-width: 740px;
-}
+}*/
 .loader {
     border: 16px solid #fff;
     border-top: 16px solid #3498db; /* Blue */
@@ -99,27 +103,74 @@ h1{
     float: right;
 
 }
+#mainPanel .btn-primary{
+    text-shadow:none;
+}
+
+
 .hiddenRow{
     display: none;
 }
 
-.hiddenTable.table>thead>tr {
-    background-color: #f9f9f9;
+.hiddenTable tbody{
+    background-color: #eeeeee;
 }
+
 #reportTable tbody tr:hover{
     background-color: #f9f9f9;
     cursor:pointer
 }
 
-
-@media (max-width: 900px) {
-    .transform-table{
-        display:none;
-    }
+.hiddenTable.table>thead>tr,
+.hiddenTable thead tr:hover,
+.hiddenTable thead tr:focus {
+    background-color: #cdcdcd !important;
 }
 
+@media (max-width: 1050px) {
+    .statusColumn{
+        display:none;
+    }
+
+/*    .priorityColumn{
+        display:none;
+    }*/
+}
+@media (max-width: 700px) {
+        .priorityColumn{
+            display:none;
+        }
+}
+@media (min-width: 1050px) {
+
+    .fixed-width {
+        width: 800px;
+
+    }
+}
 .fixed-width{
-    width: 800px;
+    min-width: 315px;
+}
+.panel-body-left {
+    margin-top: 100px;
+}
+
+#status-submission-table{
+    margin-left: 40px;
+}
+.logOut button{
+    position: relative;
+    left: 50%;
+    margin-top: 25px;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+.logOut .panel{
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }
 
 @keyframes spin {
@@ -130,6 +181,12 @@ h1{
     position:relative;
     clear:both;
 }
+@media screen and (min-height: 700px) {
+    #mainPanel {
+        min-height: 700px;
+    }
+}
+
 /*
 angular styles
 */
