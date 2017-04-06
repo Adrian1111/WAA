@@ -1,5 +1,5 @@
 <div  ng-controller="reportCtrl">
-    <div class="loader" ng-show="showSpinner" alt="Spinner, showing when user reports are loading."></div>
+
     <div class="col-md-12" ng-show="visiblePlotw">
         <h1>Report statistics</h1>
         <div class="prompt-statistics fixed-width">
@@ -61,6 +61,7 @@
                     </thead>
                     <tbody class="prompt-data-table-body" ng-repeat="item in filtered=(report | filter:filterByCategory) | orderBy:predicate:reverse| filter:categoryFilterFn"
                            ng-hide="item.id == editedReport.id">
+
                     <tr ng-keyup="$event.keyCode == 13 && onEnterPress(item)" ng-click="changeState(item)" alt="Expand new row with submission shortened details" tabindex="0">
                         <td>{{item.username}}</td>
                         <td class="priorityColumn">{{item.priority}}</td>
@@ -100,6 +101,7 @@
                             </div>
                         </td>
                     </tr>
+
                     </tbody>
                 </table>
             </div>

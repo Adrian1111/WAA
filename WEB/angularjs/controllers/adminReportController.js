@@ -14,6 +14,7 @@ angular.module("usterkaAdmin")
         };
     })
     .controller("reportCtrl", function ($scope, $interval, $window, $resource, reportsUrl, usersUrl, statusUrl, $http, priorityUrl, fullReportsUrl, $route) {
+
         $scope.userResource = $resource(usersUrl + ":id", {id: "@id"});
         $scope.isExpanded = false;
         $scope.data = {};
@@ -63,28 +64,28 @@ angular.module("usterkaAdmin")
         $scope.status = statusName = ["Nowe", "Zaakceptowane", "Zakończone", "Odrzucone"];
         $scope.listUser = function () {
             $scope.user = $scope.userResource.query();
-        }
+        };
         $scope.listUser();
 
         $scope.reloadPage = function () {
             window.location.reload();
-        }
+        };
         $scope.reloadPage2 = function () {
             $route.reload();
-        }
+        };
         $scope.reportResource = $resource(reportsUrl + ":id", {id: "@id"});
 
         $scope.listReport = function () {
             $scope.report = $scope.reportResource.query();
-        }
+        };
         $scope.listReport2 = function () {
             $scope.report2 = $scope.reportResource.query();
-        }
+        };
         $scope.deleteReport = function (report) {
 
 
             $http.post(prefix + '/reports/delete', 'id=' + report.id, {headers: $scope.headers});
-        }
+        };
 
         $scope.superZmiennaFlaga = false;
         $scope.zmniejszObraz = function () {
@@ -163,13 +164,13 @@ angular.module("usterkaAdmin")
             }
 
 
-        }
+        };
 
 
         $scope.refreshPlot = function () {
             $scope.getPlot();
             $scope.getPlot();
-        }
+        };
 
         $scope.tmp = {};
 
@@ -211,10 +212,6 @@ angular.module("usterkaAdmin")
 
         };
 
-
-        $scope.getName = function (item) {
-            console.log(item);
-        }
         $scope.predicate = 'status';
         $scope.reverse = false;
         $scope.order = function (predicate) {
@@ -246,7 +243,7 @@ angular.module("usterkaAdmin")
                     return false;
                 }
             }
-            return true;
+            //return 'No results';
         }
 
         $scope.changeState = function(active){
@@ -279,25 +276,4 @@ angular.module("usterkaAdmin")
             }
             return res;
         };
-    })
-    .directive('myCurrentTime', ['$interval', 'dateFilter',
-        function ($interval, dateFilter) {
-            return function (scope, element, attrs) {
-                var format,  // date format
-                    stopTime;
-
-                function updateTime() {
-                    element.text(dateFilter(new Date(), format));
-                    scope.refleshData();
-                }
-
-                scope.$watch(attrs.myCurrentTime, function (value) {
-                    format = value;
-                    updateTime();
-
-                });
-                //auto reflesh 10s = 10000!
-                stopTime = $interval(updateTime, 10000);
-
-            }
-        }]);
+    });

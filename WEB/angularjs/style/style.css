@@ -61,7 +61,7 @@ h1{
 }
 
 #chart dd {
-    width: 339px;
+    width: 100%;
     float: left;
     margin-bottom: 5px;
     display: inline;
@@ -153,6 +153,7 @@ h1{
 }
 .panel-body-left {
     margin-top: 100px;
+    padding-top: 0;
 }
 
 #status-submission-table{
@@ -178,8 +179,7 @@ h1{
     100% { transform: rotate(360deg); }
 }
 .stick-left{
-    position:relative;
-    clear:both;
+    display: inline-block;
 }
 @media screen and (min-height: 700px) {
     #mainPanel {
