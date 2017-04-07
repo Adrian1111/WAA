@@ -1,5 +1,6 @@
 ﻿body {
     background: #eee;
+    overflow-x: hidden;
 }
 
 h1{
@@ -46,6 +47,11 @@ h1{
 #reportTable td input {
     max-width: 225px;
 }
+@media(max-width: 1050px) {
+    #reportTable .hiddenContent td {
+        display: inline-block;
+    }
+}
 
 #chart {
     margin: 15px;
@@ -86,10 +92,7 @@ h1{
     padding-bottom: 100px;
 }
 
-.panel-default, .alert-danger, .alert-info{
-    margin: 10px;
 
-}
 /*.transform-table{
     min-width: 740px;
 }*/
@@ -141,19 +144,26 @@ h1{
             display:none;
         }
 }
+
+.panel-body-left {
+    margin-top: 100px;
+    padding-top: 0;
+}
+
+@media (max-width: 992px) {
+    .panel-body-left{
+        margin-top: 20px;
+    }
+}
+
 @media (min-width: 1050px) {
 
     .fixed-width {
         width: 800px;
-
     }
 }
 .fixed-width{
     min-width: 315px;
-}
-.panel-body-left {
-    margin-top: 100px;
-    padding-top: 0;
 }
 
 #status-submission-table{
