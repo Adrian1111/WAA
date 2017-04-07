@@ -23,7 +23,7 @@ angular.module('usterkaAdmin', ["ngRoute", "ngResource", "ngCookies"])
                 templateUrl: 'views/logout.html',
                 controller: "logoutController"
             })
-            //.otherwise({redirectTo: '/login'});
+            .otherwise({redirectTo: '/login'});
     }])
     .factory('authInterceptor', function($q) {
         var service = this;
