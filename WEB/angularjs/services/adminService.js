@@ -41,11 +41,12 @@ angular.module("usterkaAdmin")
 
                 $http({
                     method: "GET",
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    headers: {'Content-Type': 'text/html'},
                     url: 'http://tranquil-hamlet-1905.herokuapp.com/logout'
                 }).then(function (response) {
-                    console.log('success')
+                    //console.log('success')
                 }).catch(function (response) {
+
                     console.log('failure')
                 });
 

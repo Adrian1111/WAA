@@ -13,7 +13,7 @@ angular.module("usterkaAdmin")
             return statusName[input];
         };
     })
-    .controller("reportCtrl", function ($scope, $interval, $window, $resource, reportsUrl, usersUrl, statusUrl, $http, priorityUrl, fullReportsUrl, $route) {
+    .controller("reportCtrl", function ($scope, $interval, $window, $resource, reportsUrl, usersUrl, statusUrl, $http, priorityUrl, fullReportsUrl, $route, $location) {
 
         $scope.userResource = $resource(usersUrl + ":id", {id: "@id"});
         $scope.isExpanded = false;
@@ -202,13 +202,21 @@ angular.module("usterkaAdmin")
         $scope.listUser();
 
         $scope.selectReport = function (report) {
+
+            $location.path("/main/"+report.id);
+
             $http.get(prefix + '/reports?id=' + '%27' + report.id + '%27').then(function successCallback(response) {
                 report = response.data[0];
+
                 $scope.selectedReport = report;
-                javascript:scroll(0, 0);
+                //alert(JSON.stringify($scope.selectedReport));
+
+                $scope.$apply();
+
             }, function errorCallback(response) {
 
             });
+
 
         };
 
