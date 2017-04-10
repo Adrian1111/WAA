@@ -39,6 +39,13 @@ form[name=userForm]{
         width:auto;
     }
 }
+.last-tr{
+    outline: 1px solid gray;
+}
+#infoTable td.buttons-td{
+    border-right:none;
+    background-color: #fff;
+}
 #reportTable {
     width: auto;
     margin-bottom:10px;
