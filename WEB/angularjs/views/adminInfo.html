@@ -17,7 +17,7 @@
             <tr>
                 <td>{{selectedEvent.title}}</td>
                 <td>{{selectedEvent.description}}</td>
-                <td>{{selectedEvent.enddate}} </td>
+                <td>{{selectedEvent.enddate | limitTo: 16}} </td>
             </tr>
         </table>
     </div>
@@ -64,12 +64,9 @@
                 <button ng-show="editedInfo.id"
                         ng-click="updateInfo(editedInfo)"
                         class="btn btn-xs btn-primary">
-                    Save
+                    OK
                 </button>
-                <button ng-show="editedInfo"
-                        ng-click="cancelEdit()" class="btn btn-xs btn-primary">
-                    Cancel
-                </button>
+
             </td>
         </tr>
     </table>
