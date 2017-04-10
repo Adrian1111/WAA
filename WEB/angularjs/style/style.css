@@ -30,10 +30,19 @@ h1{
 .data-one {
     width: 0.0%;
 }
-
+form[name=userForm]{
+    width:500px;
+    margin-left:10px;
+}
+@media(max-width: 540px) {
+    form[name=userForm]{
+        width:auto;
+    }
+}
 #reportTable {
     width: auto;
-    margin-bottom:0px;
+    margin-bottom:10px;
+    margin-left:10px;
 }
 
 #reportTable td {
@@ -164,7 +173,6 @@ h1{
 .fixed-width{
     min-width: 315px;
 }
-
 #status-submission-table{
     margin-left: 35px;
 }

@@ -13,7 +13,7 @@ angular.module("usterkaAdmin")
             return statusName[input];
         };
     })
-    .controller("reportCtrl", function ($scope, $interval, $window, $resource, reportsUrl, usersUrl, statusUrl, $http, priorityUrl, fullReportsUrl, $route, $location) {
+    .controller("reportCtrl", function ($scope, $interval, $window, $resource, reportsUrl, usersUrl, statusUrl, $http, priorityUrl, fullReportsUrl, $route, $location, ReportService) {
 
         $scope.userResource = $resource(usersUrl + ":id", {id: "@id"});
         $scope.isExpanded = false;
@@ -203,21 +203,25 @@ angular.module("usterkaAdmin")
 
         $scope.selectReport = function (report) {
 
-            $location.path("/main/"+report.id);
-
-            $http.get(prefix + '/reports?id=' + '%27' + report.id + '%27').then(function successCallback(response) {
-                report = response.data[0];
-
-                $scope.selectedReport = report;
-                //alert(JSON.stringify($scope.selectedReport));
-
-                $scope.$apply();
-
-            }, function errorCallback(response) {
-
-            });
+            openReport(report.id);
+            //$location.path("/main/report/" + report.id);
+        };
 
 
+        function openReport(reportNum){
+
+                $http.get(prefix + '/reports?id=' + '%27' + reportNum + '%27').then(function successCallback(response) {
+                    report = response.data[0];
+
+                    $scope.selectedReport = report;
+                   // alert(JSON.stringify($scope.selectedReport));
+
+                    //$scope.$apply();
+                    //alert('test2')
+
+                }, function errorCallback(response) {
+
+                });
         };
 
         $scope.predicate = 'status';

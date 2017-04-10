@@ -20,7 +20,7 @@
 
     }])
     .controller("mainCtrl",  function ($location, $scope) {
-        $scope.screens = ["Zgłoszenia", "Informacje", "Użytkownicy", "Logout"];
+        $scope.screens = ["Reports", "Informations", "Users", "Logout"];
         $scope.current = $scope.screens[0];
 
         $scope.setScreen = function (index) {

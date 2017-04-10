@@ -1,0 +1,167 @@
+<style>
+    .ng-invalid { border: solid 1px #ff0000;}
+    .ng-valid {border: solid 1px lightgreen; }
+    span.error { color: red; font-weight: bold; }
+</style>
+<div ng-controller="userCtrl">
+    <!--<div ng-show="selectedEvent">
+        <h1>Details: {{selectedEvent.username}}</h1>
+
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>Field name</th><th>Value</th>
+            <tr>
+                <th ng-repeat="detail in data.usersData.data" ng-if="detail.userid == selectedEvent.username">
+
+                                <tr>
+                                <td>Surname</td><td><input ng-model="detail.surname" ng-keyup="updateData(detail);" required /></td>
+                                </tr>
+                                <tr>
+                                <td>Street</td><td><input ng-model="detail.street" ng-keyup="updateData(detail);" required /></td>
+                                </tr>
+                                </tr>
+                                <td>Street number</td><td><input ng-model="detail.streetnumber" ng-keyup="updateData(detail);" required /></td>
+                                </tr>
+                                </tr>
+                                <td>Apartment number</td><td><input ng-model="detail.apartmentnumber" ng-keyup="updateData(detail);" required /></td>
+                                </tr>
+                                </tr>
+                                <td>City</td><td><input ng-model="detail.city" ng-keyup="updateData(detail);" required /></td>
+                                </tr>
+                                </tr>
+                                <td>Address code</td><td><input ng-model="detail.citycode" ng-keyup="updateData(detail);" required /></td>
+                                </tr>
+                                </tr>
+                                <td>Email</td><td><input ng-model="detail.email" ng-keyup="updateData(detail);" required /></td>
+                                </tr>
+                                </tr>
+                                <td>Phone number</td><td><input ng-model="detail.phonenumber" ng-keyup="updateData(detail);" required /></td>
+                                </tr>
+                </th>
+              
+            </tr>
+        </table>
+    </div>-->
+    <h1>All active users</h1>
+
+    <table id="reportTable" class="table table-striped table-bordered">
+        <tr>
+            <th><a href="" ng-click="order('username')">Username</a>
+                <span class="sortorder" ng-show="predicate === 'priority'" ng-class="{reverse:reverse}">
+             </span>
+            </th>
+            <th></th>
+      
+        </tr>
+        <tr ng-repeat="item in data.users.data | orderBy:reverse| filter:categoryFilterFn " ng-hide="item.id == editedReport.id">
+     
+            <td>{{item.username}}</td>            
+
+            <td>
+                <!--<button ng-click="selectEvent(item)" class="btn btn-xs btn-primary">
+                    Details
+                </button>-->
+    
+                <button ng-click="delUser(item)" class="btn btn-xs btn-primary" >
+                    Delete
+                </button>
+            </td>
+
+        </tr>
+    </table>
+<div >
+
+    <form name="userForm" novalidate >
+
+        <div class="well" ng-hide=data.visible>
+            <h2>Add user</h2>
+            <p>*please fill out all required fields.</p>
+            <div class="form-group">
+                <label>Login</label>
+                <input name="username" class="form-control"
+                       ng-model="data.addUser.username" required />
+                <span class="error" ng-show="userForm.username.$error.required">
+                    Login is required.
+                </span>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input name="password" class="form-control"
+                       ng-model="data.addUser.password" type="password" required />
+                <span class="error" ng-show="userForm.password.$error.required">
+                    Password is required.
+                </span>
+            </div>
+
+            <div class="text-center">
+                <button ng-disabled="userForm.$invalid"
+                        ng-click="sendUser(data.addUser);"
+                        class="btn btn-primary">
+                    Save
+                </button>
+            </div>
+        </div>
+        <div ng-show=data.visible>
+            <h2>Add details about user {{data.addUser.username}} (optional)</h2>
+            <p>Fill out information about user.</p>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input name="name" class="form-control"
+                               ng-model="data.addUserDetail.name"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Surname</label>
+                        <input name="surname" class="form-control"
+                               ng-model="data.addUserDetail.surname"/>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label>City</label>
+                        <input name="city" class="form-control"
+                               ng-model="data.addUserDetail.city"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Address code</label>
+                        <input name="citycode" class="form-control"
+                               ng-model="data.addUserDetail.citycode"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Street</label>
+                        <input name="street" class="form-control"
+                               ng-model="data.addUserDetail.street"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Street number</label>
+                        <input name="streetnumber" class="form-control"
+                               ng-model="data.addUserDetail.streetnumber"/>
+                        <span class="error" ng-show="userDetailForm.streetnumber.$error.required">
+                            Provide address code.
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label>Apartment number</label>
+                        <input name="apartmentnumber" class="form-control"
+                               ng-model="data.addUserDetail.apartmentnumber"/>
+                        </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input name="email" class="form-control"
+                               ng-model="data.addUserDetail.email"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone number</label>
+                        <input name="phonenumber " class="form-control"
+                               ng-model="data.addUserDetail.phonenumber"/>
+                    </div>
+                    <div class="text-center">
+                        <button ng-disabled="userDetailForm.$invalid"
+                                ng-click="sendUserData(data.addUserDetail);"
+                                class="btn btn-primary">
+                            Save
+                        </button>
+                    </div>
+        </div>
+    </form>
+</div>
+</div>

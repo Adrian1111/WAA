@@ -16,9 +16,6 @@ angular.module('usterkaAdmin', ["ngRoute", "ngResource", "ngCookies"])
             .when('/register', {
                 templateUrl: 'views/register.html'
             })
-            .when('/main/:report*', {
-                templateUrl: 'views/adminReportDetails.html'
-            })
             .when('/logout', {
                 templateUrl: 'views/logout.html',
                 controller: "logoutController"

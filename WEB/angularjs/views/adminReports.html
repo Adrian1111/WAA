@@ -1,6 +1,6 @@
-<div  ng-controller="reportCtrl">
+<div ng-controller="reportCtrl">
 
-    <div class="col-md-12" ng-show="visiblePlotw">
+    <div class="col-md-12" ng-show="!selectedReport">
         <h1>Report statistics</h1>
         <div class="prompt-statistics fixed-width">
             <dl id="chart">
@@ -20,9 +20,91 @@
             </dl>
         </div>
     </div>
+    <div ng-show="selectedReport">
+        <div>
+            <h1 tabindex="0">Report Details</h1>
 
-
-    <div id="status-submission-table" class="stick-left">
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th>Nazwa Pola</th>
+                    <th>Zawartość</th>
+                </tr>
+                <tr>
+                    <td>Nazwa użytkownika</td>
+                    <td>{{selectedReport.username}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        Adres<br>
+                        email {{item.email}}<br>
+                        telefon {{item.phonenumber}}<br>
+                    </td>
+                    <td>{{selectedReport.street}}
+                        {{selectedReport.streetnumber}} /
+                        {{selectedReport.apartmentnumber}}
+                        {{selectedReport.citycode}}
+                        {{selectedReport.city}}<br>
+                        {{selectedReport.email}}<br>
+                        {{selectedReport.phonenumber}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Data dodania</td>
+                    <td>{{selectedReport.insertion_date| limitTo: 10}}</td>
+                </tr>
+                <tr>
+                    <td>Priorytet</td>
+                    <td><select ng-model="selectedReport.priority"
+                                ng-options="priority.name as priority.name for priority in data.priority"
+                                ng-click="updateReport(selectedReport);refreshPlot();" required>
+                        <option value="">{{selectedReport.priority}}</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Gdzie</td>
+                    <td>{{selectedReport.place}}</td>
+                </tr>
+                <tr>
+                    <td>Tytuł</td>
+                    <td><input ng-model="selectedReport.title" ng-keyup="updateReport(selectedReport);refreshPlot();"
+                               required/></td>
+                </tr>
+                <tr>
+                    <td>Opis</td>
+                    <td>{{selectedReport.description}}</td>
+                </tr>
+                <tr>
+                    <td>Sugestie</td>
+                    <td>{{selectedReport.sugestions}}</td>
+                </tr>
+                <tr>
+                    <td>Zdjęcia</td>
+                    <td>
+                        <div>
+                            <img id="obrazek" data-ng-src="{{'data:image/png;base64,'+selectedReport.photo}}"
+                                 width="300" height="220" ng-click="zmniejszObraz()">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Status</td><!--<td>{{selectedReport.status|statusName}}</td>-->
+                    <td>
+                        <!--<input ng-model="editedReport.status" required />-->
+                        <select ng-model="selectedReport.status"
+                                ng-options="status.value as status.name for status in data.status"
+                                ng-click="updateReport(selectedReport);refreshPlot();" required>
+                            <option value="">{{selectedReport.status|statusName}}</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <button ng-click="updateReport(selectedReport); refreshPlot(); reloadPage2();"
+                    class="btn btn-xs btn-primary">Reports List
+            </button>
+        </div>
+    </div>
+<div class="table-with-details" ng-show="!selectedReport">
+    <div id="status-submission-table"  class="stick-left">
         <div>
             <th>Show submission with status:</th>
         </div>
@@ -41,7 +123,7 @@
                     <thead>
                     <tr>
                         <th style="width:225px;">
-                            <a href="" ng-click="order('username')">Użytkownik</a>
+                            <a href="" ng-click="order('username')">Username</a>
                             <span class="sortorder" ng-show="predicate === 'username'" ng-class="{reverse:reverse}" />
                         </th>
                         <th class="priorityColumn">
@@ -107,4 +189,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>
