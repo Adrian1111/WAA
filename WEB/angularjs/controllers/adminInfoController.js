@@ -24,12 +24,14 @@ angular.module("usterkaAdmin")
         };
 
         $scope.deleteInfo = function (info) {
-            setTimeout(function () {
+
                 $http.post(prefix + '/info/delete', 'id=' + info.id, {headers: $scope.headers});
                 $http.get(prefix + '/reports?id=' + '%27' + info.id + '%27');
+
+
+            setTimeout(function () {
                 $scope.listInfo();
             }, 700);
-
         };
 
         $scope.createInfo = function (info) {
