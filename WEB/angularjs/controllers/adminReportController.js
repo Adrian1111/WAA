@@ -22,18 +22,21 @@ angular.module("usterkaAdmin")
             .then(function (data) {
 
                 $scope.data.status = [{
-                    "id": "49fee73a-3cfe-43d1-b5ab-06e04ca6a0a8",
+
                     "name": "Zaakceptowane",
                     "value": 1
                 }, {
-                    "id": "7793574f-2c53-484d-ba46-533f6f23db6b",
+
                     "name": "Zakończone",
                     "value": 2
                 }, {
-                    "id": "148c2f2e-8067-4558-83a1-c9c56ffb3a02",
+
                     "name": "Odrzucone",
                     "value": 3
-                }, {"id": "f12b89b4-cf1c-4191-b7b5-f30f31c97f5c", "name": "Nowe", "value": 0}];
+                }, {
+
+                    "name": "Nowe",
+                    "value": 0}];
 
             })
             .catch(function (error) {
