@@ -6,6 +6,7 @@ install:
 
 node 4.4.5 
 npm 2.15.5
+npm install na package.json
 npm start na katalogu z plikiem server.js
 
 run:
