@@ -36,7 +36,8 @@ angular.module("usterkaAdmin")
                 }, {
 
                     "name": "Nowe",
-                    "value": 0}];
+                    "value": 0
+                }];
 
             })
             .catch(function (error) {
@@ -212,7 +213,7 @@ angular.module("usterkaAdmin")
 
 
         function openReport(reportNum){
-
+            $scope.showSpinner = true;
                 $http.get(prefix + '/reports?id=' + '%27' + reportNum + '%27').then(function successCallback(response) {
                     report = response.data[0];
 
