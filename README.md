@@ -1,12 +1,12 @@
 # WAA
 
-na czym uruchamiane :
+na czym uruchamiane:<br>
+node 4.4.5 <br>
+npm 2.15.5<br>
 
-install:
-
-node 4.4.5 
-npm 2.15.5
-npm start na katalogu z plikiem server.js
+install:<br>
+npm install na package.json<br>
+npm start na katalogu z plikiem server.js<br>
 
 run:
 localhost:5000/
